@@ -2,8 +2,12 @@ require 'bookmark'
 
 describe Bookmark do 
   
-  it "returns list of all bookmarks" do
-    expect(Bookmark.all).to eq ['https://www.google.com']
-  end 
+  describe ".all" do
+    it "returns list of all bookmarks" do
+      bookmarks = Bookmark.all
+      expect(bookmarks).to include('https://www.kathleen.com')
+      expect(bookmarks).to include('https://www.christian.com')
+    end 
+  end
 
 end

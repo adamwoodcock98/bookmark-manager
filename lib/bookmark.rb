@@ -1,7 +1,10 @@
 class Bookmark 
 
   def self.all
-    list = ['https://www.google.com']
+    [
+    "https://www.kathleen.com", 
+    "https://www.christian.com"
+    ]
   end 
   
 end
