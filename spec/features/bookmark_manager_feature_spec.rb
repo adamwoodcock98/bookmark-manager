@@ -8,8 +8,9 @@ feature 'display Bookmark Manager' do
   scenario 'viewing bookmarks' do
     visit('/bookmarks')
     # click_on('View Bookmarks')
-    expect(page).to(have_content("https://www.kathleen.com"))
-    expect(page).to(have_content("https://www.christian.com"))
+    expect(page).to(have_content("http://www.makersacademy.com/"))
+    expect(page).to(have_content("http://www.google.com/"))
+    expect(page).to(have_content("http://www.destroyallsoftware.com"))
   end
   
 end
