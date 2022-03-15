@@ -1,4 +1,7 @@
-
+<form action='/add' method='post'>
+<input type='text' name='url'>
+<button>Add Bookmark</button> 
+</form>
 <ul>
   <% @bookmarks.each do |bookmark| %> 
     <li> <%= bookmark %> </li>

@@ -28,6 +28,14 @@ I'd like view a list of saved bookmarks.
 ![Screenshot 2022-03-14 at 14 23 43](https://user-images.githubusercontent.com/74867241/158192288-2add26fc-3323-49d6-8257-1676ac7cf8c6.png)
 
 2. Add new bookmarks
+
+``` 
+As a user,
+So that I can access websites I find on the internet,
+I'd like to add them to my bookmark list. 
+```
+
+
 3. Delete bookmarks
 4. Update bookmarks
 5. Comment on bookmarks
