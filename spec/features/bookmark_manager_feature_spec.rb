@@ -24,17 +24,15 @@ end
 
 feature 'add bookmark' do
 
-  scenario 'adding a new bookmark and get confirmation' do
+  scenario 'adding a new bookmark' do
     connection = PG.connect(dbname: 'bookmark_manager_test')
-    
-    visit('/bookmarks')
-
+    visit('/bookmarks/add')
     expect(page).to_not(have_content("http://www.test.com"))
-
     fill_in 'url', with: 'http://www.test.com'
-    click_on 'Add Bookmark'
-
+    fill_in 'title', with: 'Test'
+    click_on 'Submit'
     expect(page).to(have_content("http://www.test.com"))
+    # expect(page).to(have_content("Test"))
   end
 
 end
