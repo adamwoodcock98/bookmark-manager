@@ -21,10 +21,10 @@ describe Bookmark do
   describe ".add" do
     it 'adds a new bookmark' do
       bookmark = Bookmark.add("Google", "www.google.com") # Using a tuple from the PG gem
-      persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id}")
+      persisted_data = persisted_data(bookmark.id)
 
       expect(bookmark).to be_a Bookmark
-      expect(bookmark.id).to eq persisted_data.first['id']
+      expect(bookmark.id).to eq persisted_data['id']
       expect(bookmark.title).to eq 'Google'
       expect(bookmark.url).to eq "www.google.com"
     end
