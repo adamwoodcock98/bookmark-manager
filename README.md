@@ -32,11 +32,17 @@ I'd like view a list of saved bookmarks.
 ``` 
 As a user,
 So that I can access websites I find on the internet,
-I'd like to add them to my bookmark list. 
+I'd like to add bookmarks to my bookmark list. 
 ```
 
-
 3. Delete bookmarks
+
+``` 
+As a user,
+So that I can remove websites I no longer am interested in,
+I'd like to delete bookmarks from my bookmark list. 
+```
+
 4. Update bookmarks
 5. Comment on bookmarks
 6. Tag bookmarks into categories

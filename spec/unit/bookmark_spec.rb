@@ -30,4 +30,24 @@ describe Bookmark do
     end
   end
 
+  describe ".delete" do
+    it "deletes an existing bookmark" do
+      bookmark = Bookmark.add("Google", "www.google.com")
+      Bookmark.delete(id: bookmark.id)
+      expect(persisted_data(bookmark.id)).to be nil
+    end 
+  end 
+
+  describe ".find" do
+    it "filters table to find bookmark" do
+      bookmark = Bookmark.add("Google", "www.google.com")
+      Bookmark.find(id: bookmark.id)
+
+      expect(bookmark).to be_a Bookmark
+      expect(bookmark.id).to eq bookmark.id
+      expect(bookmark.title).to eq 'Google'
+      expect(bookmark.url).to eq 'www.google.com'
+    end 
+  end 
+
 end

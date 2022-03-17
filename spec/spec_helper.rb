@@ -6,6 +6,7 @@ require 'capybara/rspec'
 require 'rspec'
 require 'setup_test_database.rb'
 require 'database_helpers.rb'
+require 'database_connection.rb'
 
 Capybara.app = Bookmark_Manager
 

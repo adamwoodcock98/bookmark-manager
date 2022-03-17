@@ -15,18 +15,4 @@ feature 'display Bookmark Manager' do
     expect(page).to have_link("Destroy", href:"http://www.destroyallsoftware.com")
   end
   
-  
-end
-
-feature 'add bookmark' do
-
-  scenario 'adding a new bookmark' do
-    connection = PG.connect(dbname: 'bookmark_manager_test')
-    visit('/bookmarks/add')
-    fill_in 'url', with: 'http://www.test.com'
-    fill_in 'title', with: 'Test'
-    click_on 'Submit'
-    expect(page).to have_link("Test", href:"http://www.test.com")
-  end
-
 end

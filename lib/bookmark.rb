@@ -1,4 +1,5 @@
 require 'pg'
+require './lib/database_connection'
 
 class Bookmark 
 
@@ -11,23 +12,25 @@ class Bookmark
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect( dbname: 'bookmark_manager_test' )
-    else
-      connection = PG.connect( dbname: 'bookmark_manager')
-    end
-      results = connection.exec('SELECT * FROM bookmarks')
-      results.map do |row| Bookmark.new(row['title'], row['url'], row['id'])
-    end
+    connection = DatabaseConnection.connect
+    results = connection.exec('SELECT * FROM bookmarks')
+    results.map { |row| Bookmark.new(row['title'], row['url'], row['id']) }
   end 
 
   def self.add(title, link)
-    if ENV['ENVIRONMENT'] == 'test'
-      connection = PG.connect( dbname: 'bookmark_manager_test' )
-    else
-      connection = PG.connect( dbname: 'bookmark_manager')
-    end
-    result = result = connection.exec_params("INSERT INTO bookmarks (url, title) VALUES($1, $2) RETURNING id, title, url;", [link, title])
+    connection = DatabaseConnection.connect
+    result = connection.exec_params("INSERT INTO bookmarks (url, title) VALUES($1, $2) RETURNING id, title, url;", [link, title])
+    Bookmark.new(result[0]['title'], result[0]['url'], result[0]['id'])
+  end
+
+  def self.delete(id:)
+    connection = DatabaseConnection.connect
+    connection.exec("DELETE FROM bookmarks WHERE id = #{id};")
+  end
+
+  def self.find(id:)
+    connection = DatabaseConnection.connect
+    result = connection.exec("SELECT * FROM bookmarks WHERE id = #{id};")
     Bookmark.new(result[0]['title'], result[0]['url'], result[0]['id'])
   end
 end

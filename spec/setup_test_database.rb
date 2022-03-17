@@ -3,7 +3,7 @@ require 'pg'
 p "Setting up"
 
 def setup_test_database
-  connection = PG.connect(dbname: 'bookmark_manager_test')
+  connection = DatabaseConnection.connect
   connection.exec("TRUNCATE bookmarks;")
 end
 
