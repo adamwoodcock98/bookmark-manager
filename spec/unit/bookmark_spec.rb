@@ -41,13 +41,25 @@ describe Bookmark do
   describe ".find" do
     it "filters table to find bookmark" do
       bookmark = Bookmark.add("Google", "www.google.com")
-      Bookmark.find(id: bookmark.id)
+      found_bookmark = Bookmark.find(id: bookmark.id)
 
-      expect(bookmark).to be_a Bookmark
-      expect(bookmark.id).to eq bookmark.id
-      expect(bookmark.title).to eq 'Google'
-      expect(bookmark.url).to eq 'www.google.com'
+      expect(found_bookmark).to be_a Bookmark
+      expect(found_bookmark.id).to eq bookmark.id
+      expect(found_bookmark.title).to eq 'Google'
+      expect(found_bookmark.url).to eq 'www.google.com'
     end 
   end 
+
+  describe ".update" do
+    it "updates an existing bookmark" do
+      bookmark = Bookmark.add("Google", "www.google.com")
+      Bookmark.update(id: bookmark.id, title: "Google 2.0", url: "www.thenewgoogle.com")
+
+      updated_bookmark = persisted_data(bookmark.id)
+
+      expect(updated_bookmark["title"]).to eq "Google 2.0"
+      expect(updated_bookmark["url"]).to eq "www.thenewgoogle.com"
+    end
+  end
 
 end

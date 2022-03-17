@@ -3,11 +3,14 @@
 </form>
 <ul>
   <% @bookmarks.each do |bookmark| %> 
-    <li> <a href=<%= bookmark.url%>> <%= bookmark.title %> </a> 
-      <form action='/bookmarks/view'>
-        <input type='submit' value='View' name=<%= bookmark.id %> >
-        <input type='hidden' name='id_to_delete' value=<%= bookmark.id %>>
-      </form>
+    <li class="bookmark"> 
+      <a href=<%= bookmark.url%>> 
+        <%= bookmark.title %>
+      </a> 
+        <form action='/bookmarks/view'>
+          <input type='submit' value='View' name=<%= bookmark.id %> >
+          <input type='hidden' name='id_to_delete' value=<%= bookmark.id %>>
+        </form>
     </li>
     
   <% end %>

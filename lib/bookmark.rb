@@ -33,4 +33,9 @@ class Bookmark
     result = connection.exec("SELECT * FROM bookmarks WHERE id = #{id};")
     Bookmark.new(result[0]['title'], result[0]['url'], result[0]['id'])
   end
+
+  def self.update(id:, title:, url:)
+    connection = DatabaseConnection.connect
+    connection.exec_params("UPDATE bookmarks SET title = $1, url = $2 WHERE id = $3;", [title, url, id])
+  end
 end

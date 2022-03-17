@@ -44,6 +44,14 @@ I'd like to delete bookmarks from my bookmark list.
 ```
 
 4. Update bookmarks
+
+```
+As a user,
+So that I can keep my favourite links up-to-date,
+I would like to update my bookmarks.
+```
+
+4. Update bookmarks
 5. Comment on bookmarks
 6. Tag bookmarks into categories
 7. Filter bookmarks by tag

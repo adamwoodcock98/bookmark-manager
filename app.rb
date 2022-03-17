@@ -10,7 +10,7 @@ class Bookmark_Manager < Sinatra::Base
   enable :sessions
 
   get '/' do 
-    erb(:index)
+    redirect '/bookmarks'
   end 
 
   get '/bookmarks' do
@@ -35,6 +35,16 @@ class Bookmark_Manager < Sinatra::Base
 
   post '/bookmarks/delete' do
     Bookmark.delete(id: session[:id])
+    redirect '/bookmarks'
+  end
+
+  get '/bookmarks/view/update' do
+    @bookmark = Bookmark.find(id: session[:id])
+    erb(:update)
+  end
+
+  post '/bookmarks/view/update' do
+    Bookmark.update(id: session[:id], title: params[:title], url: params[:url])
     redirect '/bookmarks'
   end
   

@@ -4,3 +4,7 @@ URL: <%= @bookmark.url %>
 <form action='/bookmarks/delete' method='post'> 
   <input type='submit' value='Delete'>
 </form>
+
+<form action='/bookmarks/view/update', method='get'>
+  <input type='submit' value='Update'>
+</form>
